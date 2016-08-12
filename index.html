@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="firstAngulApp">
+<head>
+    <meta charset="utf-8">
+    <title>First Angular App</title>
+    <script src="angular.min.js"></script>
+    <script src="controler.js"></script>
+</head>
+<body ng-controller="FirstController">
+    <button ng-click="sortBy('nombre')">Order by Nombre</button>
+    <!--<span class="sortorder" ng-show="propertyName === 'nombre'" ng-class="{reverse: reverse}"></span>-->
+    <ul>
+        <li ng-repeat="post in posts.data | orderBy:propertyName:reverse | limitTo:5 | filter:q as resultados ">
+            <h2>{{post.nombre}} - {{post.usuario}}-{{post.fecharegistro| date:'dd/MM/yyyy'}}</h2>
+            <!--<h1>{{post.nombre}}</h1>-->
+        </li>
+    </ul>
+    <p ng-if="resultados.length===0">Nothing to show</p>
+</body>
+</html>
+
